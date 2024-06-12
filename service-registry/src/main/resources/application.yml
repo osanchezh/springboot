@@ -2,6 +2,11 @@ server:
   port: 8761
   
 eureka:
+  instance:
+    preferIpAddress: true
+    hostname: eureka-0
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
