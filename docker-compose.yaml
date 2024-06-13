@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  #serviceregistry:
+  eureka-server:
+    image: service-registry #nombre de la imagen que hemos creado
+    restart: always
+    container_name: service-registry
+    ports:
+      - '8761:8761'
+    networks:
+      - 'dockernetflix-network'
+
+  #eureka-server:
+  #  image: eurekaserver1 #nombre de la imagen que hemos creado
+  #  restart: always
+  #  container_name: eurekaserver1
+  #  ports:
+  #    - '8761:8761'
+  #  networks:
+  #    - 'dockernetflix-network'
+  deparment-service:
+    image: deparment-service #nombre de la imagen que hemos creado
+    restart: always
+    container_name: deparment-service
+    ports:
+      - '9002:9002'
+    networks:
+      - 'dockernetflix-network'
+  user-service:
+    image: user-service #nombre de la imagen que hemos creado
+    restart: always
+    container_name: user-service
+    ports:
+      - '9003:9003'
+    networks:
+      - 'dockernetflix-network'
+networks:
+  dockernetflix-network:

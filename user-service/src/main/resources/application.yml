@@ -1,29 +1,29 @@
 server:
-  port: 9002
+  port: 9003
 
 spring:
   application:
     name: USER-SERVICE
   
   
+#eureka:
+#  instance:
+#    preferIpAddress: true
+#    hostname: eureka-0
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
+
 eureka:
-  instance:
-    preferIpAddress: true
-    hostname: eureka-0
   client:
-    registerWithEureka: true
-    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
-  
+      defaultZone: http://127.0.0.1:8761/eureka
 
 management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
-    gateway:
-      enabled: true
+  tracing:
+    sampling:
+      probability: 1.0      
+  
+
